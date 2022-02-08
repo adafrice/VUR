@@ -1,0 +1,17 @@
+# Template file for 'ani-cli'
+pkgname=ani-cli
+version=1.7
+revision=1
+#archs="i686 x86_64"
+depends="grep sed curl openssl mpv aria2"
+short_desc="CLI tool to browse and play anime"
+maintainer="Ritvik Nayak <nayak.ritvik@gmail.com>"
+license="GPL-3.0-or-later"
+homepage="https://github.com/pystardust/ani-cli"
+distfiles="${homepage}/archive/v${version}.tar.gz"
+checksum=bec03be76cc824b180afc2a4a008a4f16032e7cabe37db7441d72f7b40355145
+
+do_install() {
+	vmkdir /usr/bin
+	vcopy ani-cli usr/bin
+}

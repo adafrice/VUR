@@ -1,0 +1,42 @@
+--- a/ani-cli	2022-02-05 11:44:05.785675208 -0800
++++ b/ani-cli	2022-02-05 11:44:21.484674353 -0800
+@@ -32,7 +32,6 @@
+ 	  -i use iina as the media player
+ 	  -v use VLC as the media player
+ 	  -D delete history
+-	  -U fetch update from github
+ 	  -V print version number and exit
+ 
+ 	Episode selection:
+@@ -54,20 +53,6 @@
+ 	exit 1
+ }
+ 
+-update_script () {
+-	# get the newest version of this script from github and replace it
+-	update="$(curl -s "https://raw.githubusercontent.com/pystardust/ani-cli/master/ani-cli" | diff -u "$0" -)"
+-	if [ -z "$update" ]; then
+-		inf "Script is up to date :)"
+-	else
+-		if printf '%s\n' "$update" | patch "$0" - ; then
+-			inf "Script has been updated"
+-		else
+-			die "Can't update for some reason!"
+-		fi
+-	fi
+-}
+-
+ dep_ch () {
+ 	# checks if programs are present
+ 	for dep; do
+@@ -504,10 +489,6 @@
+ 		v)
+ 			player_fn="vlc"
+ 			;;
+-		U)
+-			update_script
+-			exit 0
+-			;;
+ 		V)
+ 			version_text
+ 			exit 0
