@@ -1,0 +1,7 @@
+#!/bin/sh
+
+for pkg in $(ls srcpkgs/)        
+do
+./xbps-src update-check ${pkg}
+done
+
